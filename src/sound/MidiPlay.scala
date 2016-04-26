@@ -4,6 +4,9 @@ import javax.sound.midi.MidiChannel
 import javax.sound.midi.MidiSystem
 import java.util.Calendar
 
+/**
+ * Scala app using Java MIDI API to play a song.
+ */
 object MidiPlay extends App {
   val synth = MidiSystem.getSynthesizer();
   synth.open();
