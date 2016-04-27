@@ -3,6 +3,7 @@ package sound
 import javax.sound.midi.MidiChannel
 import javax.sound.midi.MidiSystem
 import java.util.Calendar
+import scala.util.Random
 
 /**
  * Scala app using Java MIDI API to play a song.
@@ -67,6 +68,12 @@ object MidiPlay extends App {
   def n[T](notes: T, times: Int) = (0 until times).map(i => notes)
   def ns[T](times: Int, notes: Seq[T]*) = (0 until times).map(i => notes.flatten).flatten
   
+  channels(0).programChange(9)
+  channels(1).programChange(35)
+  channels(2).programChange(46)
+  channels(3).programChange(7)
+  channels(4).programChange(50)
+  
   (1 to 2).map { verse =>
     melody.foldLeft(0) {
       case (tick, (note, duration, volume)) =>
@@ -77,9 +84,14 @@ object MidiPlay extends App {
   synth.close()
   
   def playNote(i: Int, verse: Int, note: Int, duration: Int, volume: Int) = {
+    if (i % 16 == 0) { 
+      channels(0).programChange(Math.abs(Random.nextInt()) % 128)
+    }
     channels(0).noteOn( note, volume * 20)
+    channels(4).noteOn( note, volume * 5)
     val tick = sleepNAccompany(duration, i, verse)
     channels(0).noteOff( note, 1 )
+    channels(4).noteOff( note, 1 )
     tick
   }
  
