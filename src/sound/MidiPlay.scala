@@ -6,7 +6,8 @@ import java.util.Calendar
 import scala.util.Random
 
 /**
- * Scala app using Java MIDI API to play a song.
+ * Scala app using Java MIDI API to play a song in several voices simultanously.
+ * With main instrument randomly changing while playing. 
  */
 object MidiPlay extends App {
   val synth = MidiSystem.getSynthesizer();
