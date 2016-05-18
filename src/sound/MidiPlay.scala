@@ -111,7 +111,7 @@ object MidiPlay extends App {
   }
   
   def accOn(tick: Int, verse: Int) = {
-    channels(1).noteOn( bass(tick), 80 )
+    channels(1).noteOn( bass(tick), 100 )
     channels(2).noteOn( second(tick), 40 )
     if (verse == 2) channels(3).noteOn( third(tick), 80 )
   }
