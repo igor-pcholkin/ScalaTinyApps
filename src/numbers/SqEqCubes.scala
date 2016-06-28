@@ -2,9 +2,9 @@ package numbers
 import Math.pow
 
 /**
- * Find numbers which could be represented both as sum of 2 squares and 2 cubes. 
+ * Find numbers (pcholkin numbers) which could be represented both as sum of 2 squares and 2 cubes. 
  */
-object PchNumbers3 extends App {
+object SqEqCubes extends App {
   println("Generating numbers...")
   val numbers = for { 
       i <- (1 to 1000)
